@@ -32,22 +32,22 @@ To run the motor without physical sensors, the board uses a Back-EMF (BEMF) resi
 The PCB uses a 4-layer stack-up optimized for high-current handling and low noise:
 
 
-**Layer 1 (Top):** Main power traces, motor phase connections, and component placement.
+**Layer 1:** Main power traces, motor phase connections, and component placement.
 
 <img width="931" height="790" alt="l1" src="https://github.com/user-attachments/assets/a2433b21-d052-430a-94aa-87353e5dd487" />
 
 
-**Layer 2 (Plane):** Continuous GND (Ground) plane for return paths and shielding.
+**Layer 2:** Continuous GND polygon for return paths and shielding.
 
 <img width="944" height="780" alt="l2" src="https://github.com/user-attachments/assets/dd4a593c-e7e7-45f4-b24e-4735d63479bd" />
 
 
-**Layer 3 (Signal/Power):** Analog routing and auxiliary power paths.
+**Layer 3:** Analog routing and auxiliary power paths.
 
 <img width="886" height="777" alt="l3" src="https://github.com/user-attachments/assets/2bcd956f-5246-4598-b6c6-cafc9361c720" />
 
 
-**Layer 4 (Bottom):** Duplicate power polygons connected with heavy via stitching to share the 60A current load and reduce heat.
+**Layer 4:** Duplicate power polygons connected with heavy via stitching to share the 60A current load and reduce heat.
 
 <img width="864" height="785" alt="l4" src="https://github.com/user-attachments/assets/298c4c8f-420a-410a-93bb-1e8ba0749db5" />
 
