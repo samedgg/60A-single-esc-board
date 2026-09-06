@@ -48,9 +48,9 @@ The PCB uses a 4-layer stack-up optimized for high-current handling and low nois
 
 | Designator | Component | Description |
 | :--- | :--- | :--- |
-| **U1** | AT32F421G8U7 | 32-bit ARM Cortex-M4 Microcontroller |
-| **U2** | FD6288Q | 3-Phase MOSFET Gate Driver |
+| **U2** | AT32F421G8U7 | 32-bit ARM Cortex-M4 Microcontroller |
+| **U1** | DRV8300DPWR | 3-Phase MOSFET Gate Driver |
 | **Q1 - Q6** | BSC010N04LSI | 40V N-Channel Power MOSFET |
 | **R22** | Shunt Resistor | Low-ohm current sensing resistor |
-| **L1** | Buck Inductor | Power inductor for 9V/3.3V regulation |
+| **U3-U4** | TPS62933DRLR Buck Regulator | Power inductor for 9V/3.3V regulation |
 | **C1 - C20** | SMD Ceramic Capacitors | Decoupling and input filter capacitors |
