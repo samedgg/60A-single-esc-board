@@ -1,20 +1,20 @@
-# 60A Single ESC Board (AT32F421)
+# Single ESC Board (AT32F421)
 
-This project is a compact **Single ESC (Electronic Speed Controller)** board designed for FPV drones and brushless motor applications. It handles up to 60A continuous current and uses the AT32F421 microcontroller.
+This project is a compact **Single ESC (Electronic Speed Controller)** board designed for brushless motor applications.
 
 ---
 
 ## ESC Topology
 
-The system uses a standard 3-phase inverter topology to drive a brushless DC (BLDC) motor. 
+At the core of the power delivery system is a standard 3-phase inverter topology. This architecture allows for precise electronic commutation, enabling smooth, reliable, and efficient control of the BLDC motor's speed and torque.
 
-<img width="843" height="528" alt="image" src="https://github.com/user-attachments/assets/29fc12c8-d3d1-453f-8d84-372b85a20152" />
+<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/29fc12c8-d3d1-453f-8d84-372b85a20152" />
 
 ### MOSFET Network
-The power stage consists of 6 N-channel MOSFETs (Infineon BSC010N04LSI) arranged in a 3-phase bridge configuration (High-Side and Low-Side pairs for phases A, B, and C). These MOSFETs switch rapidly to convert the DC battery voltage into 3-phase AC power for the motor.
+The power stage utilizes six high-efficiency Infineon BSC010N04LSI N-channel MOSFETs configured in a standard 3-phase bridge (High-Side and Low-Side half-bridges for phases A, B, and C). Driven by high-frequency PWM signals, this network effectively inverts the DC supply voltage into the sequenced multiphase waveforms required for precise motor commutation, while keeping switching losses and thermal dissipation to a minimum.
 
 ### BEMF Network
-To run the motor without physical sensors, the board uses a Back-EMF (BEMF) resistor divider network. It scales down the voltage from the floating motor phases to safe levels (3.3V) so the microcontroller's ADC can read the rotor position and time the commutation correctly.
+To facilitate sensorless motor control, the design integrates a Back-Electromotive Force (BEMF) sensing circuit. This precision resistor divider network scales the high-voltage signals from the unenergized (floating) motor phases down to a safe 3.3V logic level. This continuous feedback loop allows the microcontroller's ADC to accurately detect zero-crossing events, enabling the MCU to calculate the exact rotor position and synchronize commutation timing without the need for external Hall-effect sensors.
 
 ---
 
@@ -27,7 +27,7 @@ To run the motor without physical sensors, the board uses a Back-EMF (BEMF) resi
 
 ## Layers
 
-<img width="873" height="763" alt="layers" src="https://github.com/user-attachments/assets/eee588a3-0d5c-436e-9579-ccc6b7698f65" />
+<img width="873" height="730" alt="layers" src="https://github.com/user-attachments/assets/eee588a3-0d5c-436e-9579-ccc6b7698f65" />
 
 The PCB uses a 4-layer stack-up optimized for high-current handling and low noise:
 
@@ -47,7 +47,7 @@ The PCB uses a 4-layer stack-up optimized for high-current handling and low nois
 <img width="886" height="777" alt="l3" src="https://github.com/user-attachments/assets/2bcd956f-5246-4598-b6c6-cafc9361c720" />
 
 
-**Layer 4:** Duplicate power polygons connected with heavy via stitching to share the 60A current load and reduce heat.
+**Layer 4:** Duplicate power polygons connected with heavy via stitching to share the current load and reduce heat.
 
 <img width="864" height="785" alt="l4" src="https://github.com/user-attachments/assets/298c4c8f-420a-410a-93bb-1e8ba0749db5" />
 
@@ -63,3 +63,14 @@ The PCB uses a 4-layer stack-up optimized for high-current handling and low nois
 | **R22** | Shunt Resistor | Low-ohm current sensing resistor |
 | **U3-U4** | TPS62933DRLR Buck Regulator | Power inductor for 9V/3.3V regulation |
 | **C1 - C20** | SMD Ceramic Capacitors | Decoupling and input filter capacitors |
+
+---
+
+## IPC-2152 Analysis
+
+Based on IPC-2152 standards evaluated via the Saturn PCB Toolkit, the continuous current-carrying capacity of this Single ESC board is rated at ~24.4A. This theoretical limit is determined by analyzing the narrowest bottleneck of the power delivery network (138 mils), which utilizes two parallel copper layers (L1 and L3) with a 2oz base copper weight.
+
+<img width="500" height="250" alt="image" src="https://github.com/user-attachments/assets/f8a63d0b-fb8e-489c-8c43-81c377e649b1" />
+
+<img width="500" height="350" alt="image" src="https://github.com/user-attachments/assets/34e0832c-17e5-437d-ad5a-c575bdc73f60" />
+
